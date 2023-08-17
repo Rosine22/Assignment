@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Music Info App</title>
+</head>
+<body>
+    <h1>Music Info App</h1>
+    
+    <form method="POST">
+        <input type="text" name="artist_name" placeholder="Enter artist name">
+        <button type="submit">Search</button>
+    </form>
+    
+    {% if top_tracks %}
+        <h2>Top Tracks:</h2>
+        <ul>
+            {% for track in top_tracks %}
+                <li>
+                    <h3>{{ track.name }}</h3>
+                    <p>Play Count: {{ track.playcount }}</p>
+                    <a href="{{ track.url }}" target="_blank">Listen on Last.fm</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No top tracks found.</p>
+    {% endif %}
+</body>
+</html>
